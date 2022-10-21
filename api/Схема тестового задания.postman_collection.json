@@ -1,0 +1,327 @@
+{
+	"info": {
+		"_postman_id": "66fac579-1993-4f0b-965e-a318ea98edfe",
+		"name": "Схема тестового задания",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Публикации",
+			"item": [
+				{
+					"name": "Публикации",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/article",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"article"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Публикация",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/article/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"article",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Создание",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"test article\",\n    \"short_body\" : \"description article\",\n    \"body\" : \"body article\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/article",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"article"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Редактирование",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"test update article\",\n    \"short_body\" : \"description article\",\n    \"body\" : \"body article\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/article/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"article",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удаление",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/article/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"article",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Пользователь",
+			"item": [
+				{
+					"name": "Пользователи",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/user",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Пользователь",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/user/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Создание пользователя",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Test",
+									"type": "default"
+								},
+								{
+									"key": "email",
+									"value": "test@test.com",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "Redc@r123",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/user",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Редактирование пользователя",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"testUpdate\",\n    \"email\" : \"test@test.com\",\n    \"password\" : \"Redc@r123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/user/3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удаление пользователя",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/user/3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Авторизация",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "admin@example.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "MQ3?=Ng#",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/api/auth",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "default"
+		},
+		{
+			"key": "token",
+			"value": "1|JDtpwuX6yeKd7pJh99kKfX6XP4A9Mhtk2AKN4ML4",
+			"type": "default"
+		}
+	]
+}

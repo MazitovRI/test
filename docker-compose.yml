@@ -1,0 +1,61 @@
+version: '3.7'
+
+services:
+    php:
+        container_name: ${PROJECT_NAME}_laravel_php
+        build: ./docker/config/php
+        image: ${PROJECT_NAME}_laravel_image
+        depends_on:
+            - postgres
+        volumes:
+            - ${PROJECT_VOLUME}:/application:cached
+            - file_storage_volume:/file-storage
+            - ./docker/config/php/php.ini:/usr/local/etc/php/php.ini
+            - ./docker/config/openvpn/openvpn3.list:/etc/apt/sources.list.d/openvpn3.list
+            - ./docker/config/openvpn:/etc/openvpn3/autoload
+            - ./docker/config/openvpn:/etc/openvpn3
+        ports:
+            - "8090:8080"
+        networks:
+            - sitno_network
+
+    nginx:
+        container_name: ${PROJECT_NAME}_nginx
+        image: nginx:latest
+        ports:
+            - "8000:8000"
+            - "8001:8001"
+            - "8002:8002"
+        volumes:
+            - ./docker/config/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:cached
+            - ${PROJECT_VOLUME}:/application:cached
+            - ./docker/server/nginx/:/var/log/nginx
+            - file_storage_volume:/file-storage
+        depends_on:
+            - php
+        networks:
+            - sitno_network
+
+    postgres:
+        container_name: ${PROJECT_NAME}_postgres
+        image: postgres:latest
+        command: postgres -c 'max_connections=500'
+        environment:
+            POSTGRES_USER: ${POSTGRES_USER}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+            POSTGRES_DB: ${POSTGRES_DATABASE}
+            TZ: "Asia/Yekaterinburg"
+        volumes:
+            - postgres_volume:/var/lib/postgresql/data
+        ports:
+            - "5432:5432"
+        networks:
+            - sitno_network
+
+volumes:
+    postgres_volume:
+    file_storage_volume:
+
+networks:
+    sitno_network:
+        driver: bridge
