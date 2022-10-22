@@ -66,6 +66,7 @@ class UserController extends Controller
         //
         DB::beginTransaction();
         try {
+            $request->password = Hash::make($request->password);
             if ((new UpdateAction($request->toArray(), $user))->action()) {
                 DB::commit();
                 return $this->response($user->refresh(), 204, 'Пользователь успешно обновлен');
